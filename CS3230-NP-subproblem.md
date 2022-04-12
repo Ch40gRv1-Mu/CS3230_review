@@ -1,5 +1,9 @@
 # CS3230 NP subproblem
 
+
+
+
+
 ## Clique
 
 Given a graph G=(V,E), a clique of G is a subset $V'\subseteq V$  such that $\forall v,u \in V: uv\in E $. i.e. G'= (V', E) is a complete graph. |V'| is the size of a clique 
@@ -76,7 +80,7 @@ Given a graph G=(V,E), a clique of G is a subset $V'\subseteq V$  such that $\fo
 
    1.2 The reduction fucntion runs in constant time hence clearly in polynomial
 
-2. Independent Set returns YES $\rightarrow$ Clique returns YES:
+2. Input to IndependentSet($G, k$) is YES instance $\rightarrow$ Input to Clique($\overline{G},k$) is YES instance:
 
    2.1 Given that Independent set returns YES, then there exists $V'\subseteq V$ such that $\forall u, v\in V', (u,v)\notin E$
 
@@ -84,7 +88,7 @@ Given a graph G=(V,E), a clique of G is a subset $V'\subseteq V$  such that $\fo
 
    2.2. Then $\forall u, v\in V': (u,v) \in \overline{E}$ by the definition of $\overline{E}$ and $|V'|=k$, hence Clique returns YES
 
-3.  Clique returns YES $\rightarrow$ Indenpendent Set returns YES
+3. Input to Clique($G,k$) is YES instance$\rightarrow$ Input to IndenpendentSet($\overline{G},k$) is YES instance
 
    3.1 Given that  Clique returns YES then there exists  $V'\subseteq V$ such that  $\forall u, v\in V': (u,v) \in \overline{E}$,  and $|V'|=k$
 
