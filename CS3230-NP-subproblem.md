@@ -7,7 +7,7 @@ Given a graph G=(V,E), a clique of G is a subset $V'\subseteq V$  such that $\fo
 * Optimization version: given a graph G, find the maximum size of clique of G
 * Decisional version: given a graph G and a number k. decides whether there exists clique of G with size k
 
-#### Proof: clique is a NP-complete problem.
+#### Proof: clique is a NP-complete problem(Reduction From 3-SAT).
 
 1. Claim: clique is a NP problem
 
@@ -68,7 +68,31 @@ Given a graph G=(V,E), a clique of G is a subset $V'\subseteq V$  such that $\fo
 
 3. Therefore Clique is NP-Complete.
 
-​		
+#### Reduce Independent Set to Clique (Independent Set $\leq_p$ Clique)
+
+1. Given an instance G=(V,E), k of Independent Set Problem, where $|V|=n$, a polynomial reduction function can be constructee as follows:
+
+   1.1  Let  $\overline{G}=(V,\overline{E})$ be the complementary graph of G, k be the instance of Clique
+
+   1.2 The reduction fucntion runs in constant time hence clearly in polynomial
+
+2. Independent Set returns YES $\rightarrow$ Clique returns YES:
+
+   2.1 Given that Independent set returns YES, then there exists $V'\subseteq V$ such that $\forall u, v\in V', (u,v)\notin E$
+
+   ​       and $|V'|=k$
+
+   2.2. Then $\forall u, v\in V': (u,v) \in \overline{E}$ by the definition of $\overline{E}$ and $|V'|=k$, hence Clique returns YES
+
+3.  Clique returns YES $\rightarrow$ Indenpendent Set returns YES
+
+   3.1 Given that  Clique returns YES then there exists  $V'\subseteq V$ such that  $\forall u, v\in V': (u,v) \in \overline{E}$,  and $|V'|=k$
+
+   3.2 Then  $\forall u, v\in V', (u,v)\notin E$, and $|V'|=k$
+
+   3.3 hence  Indenpendent Set returns YES
+
+4. hence Independent Set $\leq_p$ Clique
 
 ## Vertex cover
 
