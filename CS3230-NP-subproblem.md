@@ -2,7 +2,7 @@
 
 
 
-
+![Class Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/Ch40gRv1-Mu/CS3230_review/main/NP_Reduction_Tree.puml?token=GHSAT0AAAAAABTPDK5H6T2PNAH2IZNK2HQYYSVAQCA)
 
 ## Clique
 
