@@ -1,8 +1,8 @@
-# CS3230 NP subproblem
+# CS3230 NP-Complete
 
 
 
-![Class Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/Ch40gRv1-Mu/CS3230_review/main/NP_Reduction_Tree.puml?token=GHSAT0AAAAAABTPDK5H6T2PNAH2IZNK2HQYYSVAQCA)
+![Class Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/Ch40gRv1-Mu/CS3230_review/main/NP_Reduction_Tree.puml?token=GHSAT0AAAAAABTRAMKDNKWUMWVNV3ZPABQ2YSXSBNQ)
 
 ## Clique
 
@@ -164,4 +164,45 @@ Given a graph G=(V, E), a subset $V'\subseteq V$ is said a vertex cover if $\for
 3. Therefore Vertex cover is NP-complete
 
 
+
+### SET COVER
+
+#### [Definition 1](https://en.wikipedia.org/wiki/Set_cover_problem)
+
+Given a set $U=\{a_1,a_2,...,a_n\}$, where $U$ is also called universe and a collection of m subsets of U: $S=\{S_1,...,S_m\}$, for any sub-collection of S say $S'\subseteq S$,if union of $S'$ is $U$, then $S'$ is set cover of U and $|S'|$ is the size of the set cover.
+
+- Optimization version: find the subcollection $S'\subseteq S$ with the smallest size
+- Decision version: decide whether there is a subcollection $S'\subseteq S$ With size less or equal to k.
+
+
+
+#### [Definition 2](http://www.cs.toronto.edu/~siavosh/csc373h/files/TN8.pdf)
+
+Given m sets $A_1,A_2,...,A_m \subset U$, and ask is there a subset $S\subseteq U$ such that $\forall i\in\{1,...,m\}: A_i \cap S\neq \empty \land |S|\leq k$
+
+Definition2 is not  widely applied. I didn't see clearily the relation ship beterrn definition 1 and definition 2. 
+
+
+
+### INDEPENDENT-SET
+
+Given a graph G=(V,E), an subset $V'\subseteq V$ is said to be an independent set of G if $\forall u,v(u\neq v') \in V: (u,v) \notin E$. $|V'|$ is said to be the size of independent set.
+
+- Optimization version: given a graph G=(V,E), find the independent set with maxmum size.
+- Decision version: given a graph G(V,E), decides whether there is an independent set with size k.
+
+
+
+### [SUBSET-SUM](https://www.cs.cornell.edu/courses/cs4820/2018fa/lectures/subset_sum.pdf)
+
+Given a set of non-negative numbers $S=\{v_1,v_2,...,v_n\}$ and a number V, check whether there is a subset $I\sub\{1,..., n\}$ such that  $\sum_{i\in I} v_i=V$
+
+
+
+### [KNAPSACK](https://people.orie.cornell.edu/dpw/orie6300/Lectures/lec25.pdf)
+
+Given a set of non-negative weight $S_w =\{w_1,...,w_n\}$ and a set of non-nagative value $S_v=\{v_1,...,v_n\}$, a maximum weight W, knapsack is any subset of $I\in\{1,...,n\}$ such that $\sum_{i\in I}w_i\leq W$ and $\sum_{i\in I} v_i$ is called value of the knapsack 
+
+- Optimization version: Find the knapsack with maximum value
+- Decision version: instance involing an additional integer k, decide whether there is a kanpsack with value equal or more than k
 
