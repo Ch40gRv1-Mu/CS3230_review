@@ -12,11 +12,13 @@ rectangle "SET-COVER" as SET_COVER
 rectangle "TSP" as TSP
 rectangle "INDEPENDENT-SET" as INDEPENDENT_SET
 rectangle "DIR-HAM-CYCLE" as DIR_HAM_CYCLE
+rectangle "KNAPSTACK" as KNAPSTACK
 
 CIRCUIT_SAT -down-> SAT #red
 SAT -down-> 3_CNF_SAT  #red
 3_CNF_SAT-> CLIQUE #green
 SUBSET_SUM <- 3_CNF_SAT #red
+KNAPSTACK <- SUBSET_SUM #red
 CLIQUE -> VERTEX_COVER #green
 CLIQUE <- VERTEX_COVER #red
 VERTEX_COVER -> HAM_CYCLE #red
