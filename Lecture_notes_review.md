@@ -532,3 +532,128 @@ Notation:
 Further explaination: RTBD(for review purpose ):
 
 1. Try discuss the time complexity of the data structure with aggregate method, accountign method and potential method respectively.
+
+
+
+
+
+
+
+# Lecture 9: Dynamic Programming
+
+
+
+### Memoization
+
+Storing the result of expensive function and return the result directly when called with the same input again.
+
+
+
+### Dynamic programming paradigm:
+
+- Polynomial number of subproblems
+- Huge overlap among the aubproblmes, which makes the recursive algorithm exponetial time
+- Use memoization memorizing the result of sub-problems solved already
+
+
+
+### Cut and paste
+
+It's a kind of proof by contradiction used to prove optimal substructure.  The generally goal is to show that optimal solution to constitute subproblem is necessary condition for an optimal solution to a problem. The format is as follows:
+
+1. Assume exists an optimal solution to problem with suboptimal solution to the constitute subproblem
+2. We can get a better solution by replacing the suboptimal solution to the subproblem with optimal solution to the subproblem, which contradicts the statement that the solution is optimal.
+
+In proof, can just say "by cut and paste argument, a better solution can be obtained"
+
+### Concrete example:
+
+#### Finbonacci Problem
+
+##### - Recursive algorithm	
+
+```
+mapping (int=>int) T
+RFIB(n,m) {
+	if (n==0) {
+		return 0;
+	} else if (n==1) {
+		return 1;
+	}
+	if (!T[n-2]){
+	    T[n-2] = RFIB(n-2,m);
+	}
+	if (!T[n-1]) {
+			T[n-1] = RFIB(n-1,m);
+	}
+	return T[n-1]+T[n-2];
+}
+```
+
+
+
+##### - Iterative algorithm
+
+```
+IFIB(n,m) {
+	mapping (int=>int) T;
+	T[0] = 0;
+	T[1] = 1;
+	for (int i=2; i<n; i++) {
+		T[i] = T[i-1] + T[i-2]
+	}
+}
+```
+
+The above program can be optimized to O(1) space complexity.
+
+
+
+#### Longest Common Sequence
+
+##### Difference between subsequence and substring:
+
+- Subsequence: C is said to be a subsequence of A if we can remove zero or more elements from A to get  C
+- Substring: C is said to be a substring of A if $\exists i,j$ s.t. $C=A[i:j]$
+
+
+
+##### Number of subsequence of a string:
+
+Each bit-vector of length n determins a distinct subsequence of the string of length n, hence there are totally $2^n$  posssile distince subsequences
+
+Checking whether a string C is a subsequence of B of size m takes O(m) time complexity. Hence a brute-force recursive algorithm takes $O(m\cdot 2^n)$ time in total
+
+Check [Dynamic Programming](https://github.com/Ch40gRv1-Mu/CS3230_review/blob/main/DynamicPrograming.md)
+
+
+
+#### Knapsack problem
+
+##### Description: 
+
+Given instance $(w_1,v_1), (w_2,v_2),...,(w_n,v_n)$ and a non-negative integer W, compute a subset $S\subseteq\{1,2,...,n\}$ such that $\sum_{i\in S} v_i$ gets maximum under the condition that $\sum_{i\in S}w_i\leq W$
+
+##### Dynamic programming solution:
+
+- m[i,j] = 0, if i =0 or j = 0
+- $m[i,j] = max\{m[i-1,j-w_i]+v_i, m[i-1,j]\}$, if $w_i\leq j$
+- $m[i-1,j]$, otherwise
+
+
+
+#### Coin change
+
+##### Description:
+
+Given n cents, we need to change it with denominations $d_1,d_2,...,d_k$. Goal is to use the fewest total number of coins.
+
+- f(i): the minimum number of coin needed to change the amount i
+- f(i) = $\infty$ initially for all $i\in \mathbb{Z}$
+- f(i) = 0, if i = 0
+- f(i) = $min_{j\in\{1,...,k\}}[f(i-d_j)]+1$
+
+
+
+#### 
+
