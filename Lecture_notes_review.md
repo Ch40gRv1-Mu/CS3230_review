@@ -1,14 +1,18 @@
-#  Lecture 2
+[TOC]
 
-### Definition of algorithm:
+
+
+#  Lecture 2: Asymptotic Analysis
+
+## Definition of algorithm:
 
 A well defined finite instruction to solve a given computational problem.
 
 
 
-### Word-RAM model
+## Word-RAM model
 
-##### A model of computation that a random-access machine can do bitwise operation on a single word of w bits.
+**A model of computation that a random-access machine can do bitwise operation on a single word of w bits.**
 
 - It works with size w bits, which means it can store integer up to $2^w$ 
 - Word size matches problem size(for a problem of size n, $w\geq \log n$). The model allows bitwise operations such as arithmetic and logical shifts to be done in constant time. 
@@ -16,11 +20,11 @@ A well defined finite instruction to solve a given computational problem.
 
 
 
-### Count number of operations(Example):
+## Count number of operations(Example):
 
 ![Screen Shot 2022-04-16 at 9.37.33 AM](/Users/mcr/Library/Application Support/typora-user-images/Screen Shot 2022-04-16 at 9.37.33 AM.png)
 
-### Asymptotic Analysis
+## Asymptotic Analysis
 
 Estimate the rate-of-growth of runing time of an algorithm:
 
@@ -28,37 +32,37 @@ Estimate the rate-of-growth of runing time of an algorithm:
 - $\Omega$-notation   (Lower bound)
 - $\Theta$-notation   (Tight bound)
 
-#### O-notation
+### O-notation
 
 We definine $f(n)=O(g(n))$ If $\exist c, n_0>0: 0\leq f(n)\leq c\cdot g(n) $ for $n\geq n_0$
 
-#### $\Omega$-notation
+### $\Omega$-notation
 
 We define $f(n)=\Omega(g(n))$ if $\exists c,n_0>0: f(n)\geq c\cdot g(n) \geq 0$ for $n \geq n_0$
 
-##### IMPORTANT: O-notation is an upper-bound notation. It makes no sense to say f(n) is at least $O(n^2)$.
+**IMPORTANT: O-notation is an upper-bound notation. It makes no sense to say f(n) is at least $O(n^2)$.**
 
 
 
-#### $\Theta$-notation
+### $\Theta$-notation
 
 We define $f(n)=\Theta(g(n))$ if $\exists c_1,c_2,n_0 > 0:$ $0 \leq c_1\cdot g(n)\leq f(n) \leq c_2\cdot g(n)$, for all $n\geq n_0$
 
 
 
-#### $o$-notation
+### $o$-notation
 
 We define $f(n)=o(g(n))$ if $\forall c >0$: $\exists n_0>0:$ $f(n)< c\cdot g(n)$ for all $n\geq n_0$
 
 
 
-#### $\omega$-notation
+### $\omega$-notation
 
 We define $f(n)= \omega(g(n))$ if $\forall c>0: \exists n_0>0: f(n)>c\cdot g(n)$ for all $n\geq n_0$
 
 
 
-### Limit theorem
+## Limit theorem
 
 - $\color{red}{\lim_{n\rightarrow \infty}\frac{f(n)}{g(n)}<\infty: f(n)=O(g(n))}$ 			(Intuitively, if $f(n)=\omega(g(n)): \lim_{n\rightarrow \infty}\frac{f(n)}{g(n)}=\infty$, takes contrapotively)
 
@@ -72,7 +76,7 @@ We define $f(n)= \omega(g(n))$ if $\forall c>0: \exists n_0>0: f(n)>c\cdot g(n)$
 
 
 
-### Relationship between $o,O,\omega, \Omega,\Theta$
+## Relationship between $o,O,\omega, \Omega,\Theta$
 
 - $f(n)=O(g(n)) \rightarrow f(n)\neq \omega(g(n))$
 
@@ -92,7 +96,7 @@ We define $f(n)= \omega(g(n))$ if $\forall c>0: \exists n_0>0: f(n)>c\cdot g(n)$
 
 
 
-#### Properties of Big-O
+## Properties of Big-O
 
 - Transitivity:
   - $f(n)=\Theta(g(n))\land g(n)=\Theta(h(n)) \rightarrow f(n)=\Theta(h(n))$
@@ -113,7 +117,7 @@ We define $f(n)= \omega(g(n))$ if $\forall c>0: \exists n_0>0: f(n)>c\cdot g(n)$
   - $f(n)=O(g(n))\rightarrow g(n)=\Omega(f(n))$
   - $f(n)=o(g(n))\rightarrow g(n)=\omega(f(n))$
 
-### Some concrete example:
+## Some concrete example:
 
 1. Adversial wordle
 2. Fibonacci number:
@@ -127,9 +131,9 @@ We define $f(n)= \omega(g(n))$ if $\forall c>0: \exists n_0>0: f(n)>c\cdot g(n)$
 
 
 
-# Lecture 3
+# Lecture 3: Iterative algorithm
 
-### Iteractive algorithm: Algorithm with one or multiple loops, sequentially operating on the user input.
+## Iteractive algorithm: Algorithm with one or multiple loops, sequentially operating on the user input.
 
 
 
@@ -145,9 +149,9 @@ We define $f(n)= \omega(g(n))$ if $\forall c>0: \exists n_0>0: f(n)>c\cdot g(n)$
 
 
 
-### Some concrete example:
+## Some concrete example:
 
-1. Sorting
+1. ### Sorting
 
    - Insertion sort: prove the correctness of insertion sort
 
@@ -179,7 +183,7 @@ We define $f(n)= \omega(g(n))$ if $\forall c>0: \exists n_0>0: f(n)>c\cdot g(n)$
 
         4.1 After the the first iteration the array A[1...n] is sorted by the invariant, which proves the correctness of the algorithm.
 
-### Analysis of the time complexity of interative algorithm
+#### Analysis of the time complexity of interative algorithm
 
 Usually simple, just find the operation in O(1) first and then check number of excution of O(1) operation in nested loops from center to outside.
 
@@ -211,7 +215,7 @@ Usually simple, just find the operation in O(1) first and then check number of e
 
 ​	
 
-### Ways to solve a recurrence:
+## Ways to solve a recurrence:
 
 - **Recursion tree**: draw the tree and
 - **Master method**: for format of  $T(n)=a\cdot T(n/b)+f(n)$
@@ -248,9 +252,9 @@ Compare $f(n)$ with $n^{\log_b a}$
 
 
 
-### Concrete Example:
+## Concrete Example:
 
-- #### HANOI-Tower
+- ### HANOI-Tower
 
   ```
   HANOI(n,src,dst,tmp):
@@ -272,7 +276,7 @@ Compare $f(n)$ with $n^{\log_b a}$
 
     ##### Proof: RTBD 
 
-- #### MERGE-SORT
+- ### MERGE-SORT
 
   ```
   MERGE-SORT(A,1,n):
@@ -298,7 +302,7 @@ Compare $f(n)$ with $n^{\log_b a}$
 
 
 
-- #### Powering a number
+- ### Powering a number
 
 Problem:  $f(n,m)= a^n \mod m$
 
@@ -336,9 +340,9 @@ $T(n) = 2\cdot T(n/2)+O(1)$, which is $O(\log n)$
 
 
 
-# Lecture 7
+# Lecture 7: Amortised Analysis
 
-### Amortised analysis
+## Amortised analysis
 
 Amortised analysis is the analysis of a sequence of operations to show that the average cost of each operation is small while some single operation may be expensive.
 
@@ -356,14 +360,14 @@ Given an function $f(m,n)\geq 0$, we say $f(m,n)\in O(g(m,n))$ if $\exists c,n_0
 
 
 
-#### Accounting method(Banker's method)
+### Accounting method(Banker's method)
 
 ##### Key idea:
 
 - the amortised cost $c(i)$ is fixed for each operation while the true cost $t(i)$ Varies depending on when the operation is called; 
 - Pay extra amount for cheap operation as credit prepared in advance for the rare, expensive opeation.
 
-##### Necessary condition to apply accounting method:  $\sum_{i=0}^n t(i)\leq \sum_{i=1}^n c(i)$, intuitively this means that 	the amount of money in the bank never drops below 0.
+**Necessary condition to apply accounting method:  $\sum_{i=0}^n t(i)\leq \sum_{i=1}^n c(i)$, intuitively this means that 	the amount of money in the bank never drops below 0.**
 
 The total amortized cost provides an upper bound on the total true cost.
 
@@ -371,7 +375,7 @@ The total amortized cost provides an upper bound on the total true cost.
 
 
 
-#### [Potential method](https://en.wikipedia.org/wiki/Potential_method#cite_note-gt-ad-1)
+### [Potential method](https://en.wikipedia.org/wiki/Potential_method#cite_note-gt-ad-1)
 
 - $\phi:\{S\}\rightarrow \mathbb{Z}_{\geq 0}$, where S is any state of computer or data structure
 - $\phi(0)$:  The initial state
@@ -381,7 +385,7 @@ The total amortized cost provides an upper bound on the total true cost.
 
 $c(i) = t(i) + C\cdot (\phi(i)-\phi(i-1))$, where C is a constant across the analysis(The C may be omitted because the constant does not affect the time complexity of big O)
 
-##### Necessary condition:
+### Necessary condition:
 
 - $\forall i\in\{1,...,n\}: \phi(i)\geq \phi(0)$
 
@@ -395,9 +399,9 @@ $c(i) = t(i) + C\cdot (\phi(i)-\phi(i-1))$, where C is a constant across the ana
 
 
 
-### Concerete example:
+## Concerete example:
 
-#### 1. Binary counter:
+### 1. Binary counter:
 
 ```
 BINARY-COUNTER(A):
@@ -415,7 +419,7 @@ The general objective of the analysis is to count the number of time of bit flip
 
 - Aim: get a tight bound for T(n):
 
-  ##### Aggregate method
+  #### Aggregate method
 
     Define the state:
 
@@ -434,7 +438,7 @@ The general objective of the analysis is to count the number of time of bit flip
 
      
 
-  ##### Accounting method
+  #### Accounting method
 
   Define the amortised cost of each flips as follows:
 
@@ -469,7 +473,7 @@ The general objective of the analysis is to count the number of time of bit flip
 
 
 
-#### 2. Queues
+### 2. Queues
 
 A queue structure that supporting the following two operations:
 
@@ -478,7 +482,7 @@ A queue structure that supporting the following two operations:
 
 Analysis of time complexity: the empty is a sequence of DELETE operation, where the number of delete equals to the number of elements in the queue. Moreover. it's assumed that DELETE is O(1) operation.
 
-##### Aggregation method
+#### Aggregation method
 
 ​	**Observation**: The number of DELETE is less than the number of INSERT at any time
 
@@ -488,7 +492,7 @@ Analysis of time complexity: the empty is a sequence of DELETE operation, where 
 
 ##### 
 
-##### Accounting method
+#### Accounting method
 
 ​	Define the amortized cost of operation as follows:
 
@@ -502,7 +506,7 @@ Analysis of time complexity: the empty is a sequence of DELETE operation, where 
 
 
 
-##### Potential method
+#### Potential method
 
 ​	Define the potential function as follows:
 
@@ -517,7 +521,7 @@ Because the number of elements in the queue is never negative, hence $\phi(i)\ge
 
 
 
-#### 3. Dynamic table(vector in C++)
+### 3. Dynamic table(vector in C++)
 
 The size of array may not be known in advance, when the initial array is full, we should allocate more memory space. One way is to double the size of the array whenever it's ful.
 
@@ -539,17 +543,17 @@ Further explaination: RTBD(for review purpose ):
 
 
 
-# Lecture 9: Dynamic Programming
+# Lecture 8: Dynamic Programming
 
 
 
-### Memoization
+## Memoization
 
 Storing the result of expensive function and return the result directly when called with the same input again.
 
 
 
-### Dynamic programming paradigm:
+## Dynamic programming paradigm:
 
 - Polynomial number of subproblems
 - Huge overlap among the aubproblmes, which makes the recursive algorithm exponetial time
@@ -557,7 +561,7 @@ Storing the result of expensive function and return the result directly when cal
 
 
 
-### Cut and paste
+## Cut and paste
 
 It's a kind of proof by contradiction used to prove optimal substructure.  The generally goal is to show that optimal solution to constitute subproblem is necessary condition for an optimal solution to a problem. The format is as follows:
 
@@ -566,11 +570,11 @@ It's a kind of proof by contradiction used to prove optimal substructure.  The g
 
 In proof, can just say "by cut and paste argument, a better solution can be obtained"
 
-### Concrete example:
+## Concrete example:
 
-#### Finbonacci Problem
+### Finbonacci Problem
 
-##### - Recursive algorithm	
+#### - Recursive algorithm	
 
 ```
 mapping (int=>int) T
@@ -592,7 +596,7 @@ RFIB(n,m) {
 
 
 
-##### - Iterative algorithm
+#### - Iterative algorithm
 
 ```
 IFIB(n,m) {
@@ -609,16 +613,16 @@ The above program can be optimized to O(1) space complexity.
 
 
 
-#### Longest Common Sequence
+### Longest Common Sequence
 
-##### Difference between subsequence and substring:
+#### Difference between subsequence and substring:
 
 - Subsequence: C is said to be a subsequence of A if we can remove zero or more elements from A to get  C
 - Substring: C is said to be a substring of A if $\exists i,j$ s.t. $C=A[i:j]$
 
 
 
-##### Number of subsequence of a string:
+#### Number of subsequence of a string:
 
 Each bit-vector of length n determins a distinct subsequence of the string of length n, hence there are totally $2^n$  posssile distince subsequences
 
@@ -628,13 +632,13 @@ Check [Dynamic Programming](https://github.com/Ch40gRv1-Mu/CS3230_review/blob/ma
 
 
 
-#### Knapsack problem
+### Knapsack problem
 
-##### Description: 
+#### Description: 
 
 Given instance $(w_1,v_1), (w_2,v_2),...,(w_n,v_n)$ and a non-negative integer W, compute a subset $S\subseteq\{1,2,...,n\}$ such that $\sum_{i\in S} v_i$ gets maximum under the condition that $\sum_{i\in S}w_i\leq W$
 
-##### Dynamic programming solution:
+#### Dynamic programming solution:
 
 - m[i,j] = 0, if i =0 or j = 0
 - $m[i,j] = max\{m[i-1,j-w_i]+v_i, m[i-1,j]\}$, if $w_i\leq j$
@@ -642,9 +646,9 @@ Given instance $(w_1,v_1), (w_2,v_2),...,(w_n,v_n)$ and a non-negative integer W
 
 
 
-#### Coin change
+### Coin change
 
-##### Description:
+#### Description:
 
 Given n cents, we need to change it with denominations $d_1,d_2,...,d_k$. Goal is to use the fewest total number of coins.
 
@@ -655,5 +659,253 @@ Given n cents, we need to change it with denominations $d_1,d_2,...,d_k$. Goal i
 
 
 
-#### 
+# Lecture 9: Greedy algorithm
 
+## General idea:
+
+Recast the problem so that only one subproblem should be solved each one step. Moreover, the program can make greedy choice given the result of the subproblem to achieve optimize result to the original problem. 
+
+
+
+### Proof of correctness of greedy algorithm
+
+- Optimal substructure
+  - Usually by cut and paste argument
+- Greedy choice
+  - There is at least one optimal selection with the choice; Because each step has only one subproblem
+
+
+
+### The difference between greedy algorithm and dynamic programming:
+
+- Greedy algorithm is like a list, where the next result depends only on current output, henc the greedy choice of each step will finally get an optimal final result.
+- Dynamic programming is like a tree, where each nodes depends on all its child, hence the optimal of each nodes will not necessarily yield the optimum result of child node by game theorem.
+
+
+
+## Concrete example:
+
+### Fractional Knapsack
+
+If the objects are not atomic but some dividable products(such as water and oil). Then given the instance $(w_1, v_1),(w_2,v_2),...,(w_n,v_n)$ and W; optimum of $\sum_{i} v_i\cdot \frac{x_i}{w_i}$ would optimize the overall value(because the W is fixed and no blank space left and a higher dencentration means higher quality)
+
+```
+FK(((w1, v1),(w2,v2),...,(wn,vn)),W):
+	valperkg <- [1...n]
+	sort valperk, where i<=j iff vi/wi <= wj/wj
+	for i<- n to 1
+			if W == 0:
+				break
+			j < valperk[i]
+			w_tmp <- min(W,w[j])
+			print(w_tmp+" kgs of item "+ j)
+			W <- W-k
+			
+			
+```
+
+
+
+##### Proof of correctness
+
+RTBD
+
+
+
+
+
+### Minimum Spanning Tree(MST)
+
+Given a graph G = (V,E), and a mapping $w: E\rightarrow R^+$, find a minimum tree containing all $v\in V$ with minimum weights.
+
+#### Proof of optimal substructute
+
+1. Given a MST $T=(V_T,E_T)$ of graph G,  $\forall (u,v)\in E_T$: say  $T=T_1 \cup \{(u,v)\}\cup T_2$, where $T_1 = (V_{T_1}, E_{T_1}), T_2 = (V_{T_2}, E_{T_2})$ and $u\in V_{T_1}, v\in V_{T_2}$
+
+2. Then $T_1$ is MST of $G\backslash \{V_{T_2}, E_2\}$, where $E_2=\{(u,v)\in E: u,v \in V_{T_2}\}$
+3. Otherwise if there is another spanning tree $T'$ with lower weights, then by cut and paste argument $T_1'\cup \{u,v\} \cup T_2$ will be a ST with lower weights thant T, which conflicts that T is MST.
+4. Hence optimal substructure proved
+
+#### Proof of greedy choice
+
+1. Let $(u,v)\in E$ be the edge with minimum wightage, there is a MST of G that contains (u,v)
+2. Assume there is a MST that does not contain (u,v). There is a path from u to v,  remove any edge on the path and add (u,v) will keep the new tree 
+   - The new tree a spanning tree because each nodes have degree 2 on the path and removal of one path will not decrease any node to degree 1. 
+   - The new tree will have weight no less than the original MST because weight of (u,v)  is less or equal to the weight of edge removed.
+3. Then a MST containing (u,v) is made and the greedy choice is proved
+
+
+
+### Prim's algorithm
+
+```
+Prim(V,E):
+	MinimumHeap mh;
+	T_E = {}
+	T_V = {}
+	v <- V[0]
+	V <- V\v
+	T_V.push(v)
+	for ((v,u) in E):
+		mh.push(((v,u),u))
+		E <- (v,u)
+	while V not empty:
+		while True:
+			e, v <- mh.head()
+			mh.pop()
+			if v not in T_V:
+				T_V.push(v)
+				for ((v,u) in E):
+					mh.push(((v,u),u))
+					E <- (v,u)
+				
+			
+```
+
+
+
+### Haffman Code
+
+RTBD
+
+
+
+# Lecture 10: Reduction and Intractability
+
+## Instance
+
+An instance of an algorithm is all input needed to compute the result of hte algorithm
+
+## Reduction
+
+A way to solve problem. Generally format:
+
+1. Given a algorithm A, convert instance of A to instance of B
+
+2. Execute algorithm B to get the result
+
+3. Convert the result of B to result of A
+
+   <img src="/Users/mcr/Library/Application Support/typora-user-images/Screen Shot 2022-04-21 at 8.32.27 AM.png" alt="Screen Shot 2022-04-21 at 8.32.27 AM" style="zoom:50%;" />
+
+## p(n)-time Reduction
+
+- A instance $\beta$ of problem B can be converted from instance $\alpha$ of problem A
+- A solution of problem A can be recovered from solution of problem B
+
+We say that there is a p(n)-time reduction from A to B
+
+![Screen Shot 2022-04-21 at 8.39.15 AM](/Users/mcr/Library/Application Support/typora-user-images/Screen Shot 2022-04-21 at 8.39.15 AM.png)
+
+## Time complexity of p(n)-time reduced algorithm
+
+If there is a p(n)-time reduction from problem A to B, and there is a T(n)-time algorithm to solve problem B on instance of size n. Then there is an T(O(p(n)))+O(p(n)) algorithm to solve problem A with instance of size n.
+
+![Screen Shot 2022-04-21 at 8.43.10 AM](/Users/mcr/Library/Application Support/typora-user-images/Screen Shot 2022-04-21 at 8.43.10 AM.png)
+
+
+
+## Polynomial Time Reduction
+
+If there is a p(n)-time reduction from A to B, where $p(n)=O(n^c)$ for some constant c, then we say that there is a polynomial time reduction from A to B, denoted as $A\leq_p B$
+
+Notably, if $A\leq_p B$, and there is an polynomial algorithm to B, then there is a polynomial algorithm to A.
+
+
+
+## Polynomial
+
+When talking about the "polynomial" of an algorithm, we mean that the algorithm is polynomial in the length of encoding of the instance.
+
+
+
+### Standard encoding:
+
+- Integer: binary encoding
+- Mathematical objects(Graph, Array, Matrix):  list of data
+
+
+
+### Pseudo-polynomial
+
+An algorithm runs in polynomial to numeric value of the input of instance but in exponential to the length of input is called pseudo-polynomial.
+
+
+
+##  Concrete example
+
+1. ### Matrix Squaring and Matrix Multiplication
+
+2. #### 0-Sum and T-Sum
+
+
+
+## Intractability
+
+In computational theory, a problem is intractable if there is no efficient algorithm to solve them.
+
+
+
+## Decision Problem vs Optimization Problem
+
+### Decision Problem
+
+Decision algorithm is a function that maps the space of instance to $\{True, False\}$
+
+### Optimization Problem
+
+An optimization problem:
+
+- An predefined totally ordered set of the result of algorithm  $S$ 
+- An adversary that tries to compromise the algorithm
+
+An optimization algorithm is a function that maps the space of instance to space of result of the problem such that no super-polynomial adversary can compromise the result of the algorithm by providing better ordered results.
+
+
+
+### Reduction From Decision Problem to Optimization Problem
+
+Instance of decision problem is usaully the instance of optimization problem $I$ plus a element $k$ of the pre-defined totally ordered set $S$.
+
+Hence given stantance of decision problem $(I,k)$, setting $(I)$ as the instance of optimization problem and executes Optimization Problem. The result of Decision Problem can be recovered by comparing  $k$ with the output of Optimization Problem $v_{optimized}$: 
+
+- If $k\leq v_{optimized}$: return True
+- else return False
+
+
+
+## Reduction From Decision Problem To Decision Problem
+
+Given two decision problem A,B, we can reduce A to B following the format:
+
+1. Show that there is a polynomial $p(n)$ converting instance $\alpha$ of A to instance $\beta$ of B
+2. Shows that $\alpha$ is an YES instance of A $\rightarrow$ $\beta$ is an YES instance of B
+3. Shows that $\beta$ is an YES instance of B $\rightarrow$ $\alpha$ is an YES instance of A
+
+
+
+## Concrete Example 
+
+### Vertex Cover
+
+Given a graph G=(V,E), is there a subset $V'\subseteq V$ with size k(or fewer) such that each edge $e\in E$ is incident to at least one vertex of V
+
+
+
+### Independent Set
+
+Given a graph G(V,E), is there a subset $V'\subseteq V$ such that $\forall u,v \in V': (u,v)\notin E$
+
+
+
+### Set Cover
+
+Given a set of integers S={1,..,n}, is there $\leq k$ subsets of S whose union equals to S
+
+
+
+### Satifiability:
+
+- Literal: A boolean variable or its negation
+- Clause: A disjunction(OR) of literals
+- Conjective Normal Form(CNF): a formula $\phi$ that is conjunction(AND) of clauses.

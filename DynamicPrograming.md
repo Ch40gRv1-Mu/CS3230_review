@@ -75,7 +75,34 @@ T(n,m) = MAX(T(n-1,m-1)+ O(1), T(n-1,m)+T(n,m-1)+O(1))
 
 
 
+- #### Longest common subsequence of m strings
 
+  Given m strings, and find their longest common subsequence
+
+  the idea is similar to the LCS of two strings, think about how we solved the longeszt common string:
+
+  1. Use a 2-D array storing the the status, where $A[i][j]$ represents the longest common subsequence of string $s_1[1...i]$ and $ s_2[1...j]$ 
+  2. For m strings we can use a m-D array $A[k_1][k_2]...[k_m]$ where:
+     - $A[k_1][k_2]...[k_m]=\empty$, if any exist any $k_i$ = 0 (i.e. empty string)
+     - $A[k_1][k_2]...[k_m]=1+A[k_1-1][k_2-1]...[k_m-1]$, if $s_1[k_1]==s_2[k_2]==...==s_m[k_m]$
+     - $A[k_1][k_2]...[k_m]= \max\{A[k_1]...[k_i-1]...[k_m]\}$
+
+- #### String editing:
+
+  Given two string $s_1, s_2$ of size m, n respectively, there are three supported unit operations to edit the string:
+
+  - Insert: insert one char in any position of the string
+  - Delete: delete one char of any position in the string
+  - Edit: edit one char in the string to any other char.
+
+  df(i,j): the minimum steps to edit $s_1[1...i]$ to $s_2[1...j]$
+
+  - df(i,j) = m, if n == 0 (just delete all chars)
+  - df(i,j) = n, if m == 0 (just insert all correspond strings)
+  - d(i,j) = d(i-1,j-1), if $s_1[n]==s_2[m]$
+    - Modify by insert: d(i,j) = d(i, j-1) + 1 (insert char $s_2[m]$ at the end )
+    - Modify by delete: d(i.j) = d(i-1,j) + 1 (delete char $s_1[n]$ at the end)
+    - Modify by editing: d(i,j) = d(i-1, j-1) + 1 (edit the $s_1[n]$ to $s_2[m]$ directly)
 
 
 
