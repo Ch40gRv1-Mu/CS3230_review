@@ -909,3 +909,48 @@ Given a set of integers S={1,..,n}, is there $\leq k$ subsets of S whose union e
 - Literal: A boolean variable or its negation
 - Clause: A disjunction(OR) of literals
 - Conjective Normal Form(CNF): a formula $\phi$ that is conjunction(AND) of clauses.
+
+
+
+
+
+# NP-Complete
+
+##  NP problem
+
+NP problem is the class of problems that have polynomial verifiable certificate for YES instance
+
+## $P\subseteq NP$
+
+It's obvious that $P$ problem has a polynomial verifiable certificate, because the verification algorithm should be no harder than the solution algorithm (Otherwise it's trival to claim that it's algorithm solving the problem). On the other hand, there must exist a verification algorithm  that solves the $P$ problem in polynomial time and verify itself
+
+## NP-hard
+
+A problem $A$  is said to be NP hard if $\forall $ Problme $B\in NP: B\leq_P A$
+
+## NP-Complete
+
+A problem $A$ is said to be NP-Complete if it's both NP and NP-hard.
+
+
+
+## Cook-Levin Theorem
+
+Any problem in NP reduced to 3-SAT
+
+
+
+## Tips of reduction:
+
+- try something trivial, and see how it fails.
+
+## Concrete Example
+
+### Reduce 3-SAT to independent problem
+
+refers to NP-complete note
+
+## Ham-cycle: 
+
+Given a graph G=(V,E), the Ham-cycle problem is to decide whether there is a **simple** cycle that passes every vertex $v\in  V$
+
