@@ -561,6 +561,15 @@ Storing the result of expensive function and return the result directly when cal
 
 
 
+## Steps to do dynamic programming
+
+1. Characterize the structure of optimal solution
+2. Recursively define the optimal solution
+3. Compute the result of some base case(Bottom up manner)
+4. Recursively compute the optimal solution given the optimal solution to subproblem.
+
+
+
 ## Cut and paste
 
 It's a kind of proof by contradiction used to prove optimal substructure.  The generally goal is to show that optimal solution to constitute subproblem is necessary condition for an optimal solution to a problem. The format is as follows:
@@ -658,6 +667,66 @@ Given n cents, we need to change it with denominations $d_1,d_2,...,d_k$. Goal i
 - f(i) = $min_{j\in\{1,...,k\}}[f(i-d_j)]+1$
 
 
+
+### Rod Cutting
+
+Given a rod with length of n and a vector indicating the price of rod with differentce length $P = (p_1,p_2,...,p_n)$ with $p_i$ indicates the price of rod with length i.
+
+1. Characterize the structure of the optimal solution
+
+   1.1 The structure of the optimal solution would be serveral cuts $r_1,r_2,...,r_k$ with $\sum r_i = n$
+
+   1.2 Given that $(r_1,r_2,...,r_k)$ is the optimal cutting of n, $(r_1,...,r_i)$ is the optimal cuttineg of length $\sum_{t=1}^{i} r_i$, otherwise can use cut and paste  argument to easily find conflict
+
+2. Define the value of optimal solution(state) recursively:
+
+   2.1 Let dp(i) denote the maximum value got with a rod of length i
+
+   2.2 $dp(i)$ is initialized to 0 for all $1\leq i \leq n$
+
+   2.2 $dp(1) = p_1$
+
+   2.3 $dp(n) = \max_{n_l, n_r: n_l+n_r =n} \{dp(n_l)+dp(n_r)\}$
+
+The left two step is to convert the recursion into interative version
+
+Some more optimization:
+
+- Use symmetric to reduce the number of comparision needed
+- The left most of cuts must be one of P hence $dy(n) = \max \{p(n)+p(1)+dy(n-1)+...+p(1)\}$, this optimization is especially greate when the number of prices are significant less than n(i.e. $P=(p_1,p_2,...,p_k), k<<n$)
+
+
+
+### Longest increasing subsequence problme(LIS) 
+
+Given a sequence of numbers $A=(a_1,a_2,...,a_n)$ , find $(k_1,k_2,...,k_t)$ with the maximum value t, with $k_1<k_2<...<k_t$ such that $A(k_i)\leq A(k_j)$ given $i\leq j$
+
+Method 1:
+
+- dp[i]: the maximum length of  increasing subsequence 
+- dp[i] = 1 initially, for $i \in \{1,2,...,n\}$ and 0 otherwise
+- dp[i] = $\max_{j\leq i \land A[[j]\leq A[i]]}dp[j]+1$
+- Result $\max_{i\in \{1,...,n\}} \{dp[i]\}$
+
+Method 2:
+
+- dp[i]: the index of minimum element e, which which there subsequence of length i ending with e
+- len: the current length of maximum subsequence
+- dp[i] =$\infty$ initially
+- dp[len+1] = $dp[i]$ if $A[i]\geq dp[len]$
+- dp[j] = i if $A[i]\leq A[dp[j]] \land A[i] \geq A[dp[j-1]]$  for $j=1$ to len
+
+
+
+### Longest Palindromic Substring
+
+$dp[i][j]$:  1 if string[i:j] is palindromic; 0 otherwise
+
+$dp[i][i] = 1$
+
+$dp[i][i+1] = 1$ if string[i] == string[i+1] for i=1 to n-1
+
+result: $max\{|i-j|: dp[i][j] == true\}$
 
 # Lecture 9: Greedy algorithm
 
@@ -832,11 +901,46 @@ An algorithm runs in polynomial to numeric value of the input of instance but in
 
 
 
-##  Concrete example
+## Concrete example
 
-1. ### Matrix Squaring and Matrix Multiplication
+### Matrix Squaring and Matrix Multiplication
 
-2. #### 0-Sum and T-Sum
+- MATRIX SQUARING
+
+  Given a $n\times n$ matrix A, calculate $A\times A$
+
+- MATRIX MULTIPLICATION
+
+  Give  two $n\times n$ matrices A,B, calculate $A\times B$
+
+Reduce MATRIX SQUARING to MATRIX MULTIPLICATION is obvious
+
+Reduce MATRIX MULTIPLICATION to MATRIX SQUARING:
+
+1. Given matrices $A,B$, construct matrix 
+   $$
+       \left(\begin{matrix}
+           0 & A \\
+           B & 0
+       \end{matrix}
+       \right)
+   $$
+   
+
+### 0-Sum and T-Sum
+
+- 0-sum:
+
+  Given a set of numbers $A=\{a_1,a_2,...,a_n\}$, decides whether there are two distinct elements $a_i,a_j \in A$ such that $a_i+a_j = 0$
+
+- T-sum
+
+  Given a set of numbers $A=\{a_1,a_2,...,a_n\}$ and T, decides whether there are two distinct elements $a_i,a_j \in A$ such that $a_i+a_j = T$
+
+Reduce T-sum to 0-sum:
+
+1.  Given instance of T-sum $A=\{a_1,a_2,...,a_n\}$  and T, make $A'=\{a_i-T/2| a_i\in A\}$
+2. $A'$ as instance of 0-sum 
 
 
 
@@ -954,3 +1058,35 @@ refers to NP-complete note
 
 Given a graph G=(V,E), the Ham-cycle problem is to decide whether there is a **simple** cycle that passes every vertex $v\in  V$
 
+
+
+
+
+
+
+# Interesting time complexity
+
+## $T(n)=4T(\frac{n}{2})+n^2\lg\lg n$
+
+Firstly, the master's method cannot be applied here:
+
+1. Let $\ n = 2^m,  T(2^m) = 4 T(2^{m-1})+ 2^{2m }\lg m$
+2. Let $G(m) = T(2^m ): G(m) = 4 G(m-1) + 4^{m}\lg m=4^m \cdot \sum_{i=1}^m \lg i = 4^m \lg m! = \Theta(4^m \cdot m \lg m)$
+
+3. Because $m = \lg n$, $G(m)= \Theta(n^2 \lg n \lg\lg n)$
+
+
+
+## $2^n << (\lg n)^n << n! << n^n$
+
+
+
+
+
+# Useful knowledge
+
+- $\sum_{i=1}^n \frac{1}{i} \leq \int_{1}^n \frac{1}{i} di = \ln i$
+
+- $\sum_{i=1}^n \frac{1}{i^2} \leq \sum_{i=1}^n \frac{1}{i*(i-1)} = 1-\frac{1}{2}+\frac{1}{2}- \frac{1}{3}... +\frac{1}{n-1}-\frac{1}{n} = \frac{n-1}{n}$
+
+  
