@@ -1,6 +1,4 @@
 @startuml
-
-
 rectangle "CIRCUIT-SAT" as CIRCUIT_SAT
 rectangle SAT 
 rectangle "3-CNF-SAT" as 3_CNF_SAT 
@@ -21,6 +19,8 @@ SUBSET_SUM <- 3_CNF_SAT #red
 KNAPSTACK <- SUBSET_SUM #red
 CLIQUE -> VERTEX_COVER #green
 CLIQUE <- VERTEX_COVER #green
+INDEPENDENT_SET -> CLIQUE #green
+INDEPENDENT_SET <- CLIQUE #green
 VERTEX_COVER -> HAM_CYCLE #green
 VERTEX_COVER -down-> SET_COVER #green
 HAM_CYCLE -> TSP #red
