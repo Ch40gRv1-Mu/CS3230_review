@@ -539,9 +539,15 @@ Further explaination: RTBD(for review purpose ):
 
 
 
+### 4. The ways to find the account:
 
+Try to figure out the relationship that a group of element/operation should pay for the other group of element.
 
+E.g. 
 
+![IMG_0897](/Users/mcr/Downloads/IMG_0897.jpg)
+
+The other example is when the cost is O(n) for kth operation where k is a Fibonacci number
 
 # Lecture 8: Dynamic Programming
 
