@@ -734,6 +734,12 @@ $dp[i][i+1] = 1$ if string[i] == string[i+1] for i=1 to n-1
 
 result: $max\{|i-j|: dp[i][j] == true\}$
 
+
+
+### Some other example:
+
+![Screen Shot 2022-04-26 at 2.43.48 PM](/Users/mcr/Documents/GitHub/CS3230_review/image/Screen Shot 2022-04-26 at 2.43.48 PM.png)
+
 # Lecture 9: Greedy algorithm
 
 ## General idea:
